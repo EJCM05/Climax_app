@@ -51,14 +51,17 @@ function App() {
   return (
     <div className="content">
       <h1 className="title-one">Bienvenido a CliMax 🌦</h1>
+      <div className="container w-75">
+
       <div className="position-text">
         <Card_text />
       </div>
-      <div className="position-cards">
+      <div className="position-cards w-100">
         <Card {...state} />
       </div>
       <div className="position-forms">
         <Climax_form getClimax={getClimax} />
+      </div>
       </div>
     </div>
   );

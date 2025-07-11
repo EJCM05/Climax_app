@@ -153,3 +153,159 @@ th, td {
         align-items: center;
     }
 }
+
+.card-container {
+    display: flex; /* Arranges sections side-by-side */
+    flex-wrap: wrap; /* Allows sections to wrap to the next line on smaller screens */
+    gap: 20px; /* Adds space between sections */
+    justify-content: center; /* Centers the cards horizontally */
+    padding: 20px; /* Adds some padding around the container */
+}
+
+.card-section {
+    background-color: #f9f9f9; /* Light background for each card */
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 25px; /* Inner spacing */
+    flex: 1; /* Allows sections to grow and shrink */
+    min-width: 300px; /* Minimum width before wrapping */
+    max-width: 500px; /* Maximum width for larger screens */
+    display: flex; /* Uses flexbox for content inside the section */
+    flex-direction: column; /* Stacks content vertically */
+    justify-content: space-between; /* Distributes space between content */
+}
+
+.card-section h2 {
+    color: #333; /* Darker color for headings */
+    margin-bottom: 15px; /* Space below headings */
+    font-size: 1.5em; /* Larger font size for headings */
+    border-bottom: 2px solid #eee; /* Underline for headings */
+    padding-bottom: 10px;
+}
+
+.card-section p {
+    color: #555; /* Slightly lighter color for paragraphs */
+    line-height: 1.6; /* Improves readability of text */
+    margin-bottom: 10px; /* Space between paragraphs */
+}
+
+.card-section ul {
+    list-style: none; /* Removes default bullet points */
+    padding: 0; /* Removes default padding */
+    margin-bottom: 15px;
+}
+
+.card-section ul li {
+    background-color: #eef; /* Light blue background for list items */
+    padding: 8px 12px; /* Padding inside list items */
+    margin-bottom: 5px; /* Space between list items */
+    border-left: 3px solid #007bff; /* Accent color on the left */
+    border-radius: 4px; /* Rounded corners for list items */
+    color: #333;
+}
+
+.creator-info {
+    text-align: right; /* Aligns creator info to the right */
+    font-size: 0.9em; /* Smaller font size */
+    color: #777; /* Lighter color */
+    margin-top: 20px; /* Space above creator info */
+    padding-top: 10px;
+    border-top: 1px dashed #eee; /* Dashed line above creator info */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column; /* Stacks cards vertically on smaller screens */
+        align-items: center; /* Centers items when stacked */
+    }
+    .card-section {
+        max-width: 90%; /* Allows cards to take up more width */
+    }
+}
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    /* You might want a background for the page to see the glass effect better */
+    /* Example: background: linear-gradient(135deg, #4CAF50, #2196F3); */
+}
+
+.card-section {
+    /* Glassmorphism Styles */
+    background-color: rgba(255, 255, 255, 0.15); /* Light, transparent background */
+    backdrop-filter: blur(20px); /* Frosted glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+    border-radius: 15px; /* Rounded corners */
+
+    padding: 25px;
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white; /* Default text color for the section */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+.card-section:hover {
+    transform: translateY(-5px) scale(1.01); /* Subtle lift and scale on hover */
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+.card-section h2 {
+    color: white; /* Ensure heading is white */
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3); /* Lighter, transparent underline */
+    padding-bottom: 10px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Subtle text shadow for readability */
+}
+
+.card-section p {
+    color: white; /* Ensure paragraphs are white */
+    line-height: 1.6;
+    margin-bottom: 10px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+}
+
+.card-section ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.card-section ul li {
+    background-color: rgba(255, 255, 255, 0.1); /* Very light, transparent background for list items */
+    padding: 8px 12px;
+    margin-bottom: 5px;
+    border-left: 3px solid rgba(255, 255, 255, 0.5); /* Semi-transparent white accent */
+    border-radius: 4px;
+    color: white; /* Ensure list items text is white */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.creator-info {
+    text-align: right;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.8); /* Slightly less opaque white for info */
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.3); /* Dashed, transparent line */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card-section {
+        max-width: 90%;
+    }
+}

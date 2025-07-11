@@ -1,20 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const Card = (props) => {
-  // console.log(props)
-  
   return (
     <StyledWrapper>
-      <div className="cardContainer">
+      <div className="cardContainer w-100">
         <div className="card">
           <p className="city">{props.city}</p>
-          <p className="weather">PARTILY CLOUDY</p>
-          <svg className="weather" version="1.1" id="Layer_1" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" xmlSpace="preserve">
-            <image id="image0" width={100} height={100} x={0} y={0} href="data:image/png;base64,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" />
-          </svg>
+          <p className="weather h1">PARCIALMENTE NUBLADO</p> {/* Changed to Spanish for consistency */}
+          {/* Consider replacing this SVG with a dynamic one based on props.weatherCondition for more realism */}
           <p className="temp">{props.temperature}°C</p>
-          <div className="minmaxContainer">
+          <div className="minmaxContainer mt-0">
             <div className="min">
               <p className="minHeading">Min</p>
               <p className="minTemp">{props.temperatureMin}°C</p>
@@ -30,6 +25,30 @@ const Card = (props) => {
   );
 }
 
+// Keyframe animations
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const float = keyframes`
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+`;
+
+const pulse = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+`;
+
 const StyledWrapper = styled.div`
   .cardContainer {
     width: fit-content;
@@ -37,41 +56,67 @@ const StyledWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    perspective: 1000px; /* For 3D transformations on hover */
+    animation: ${fadeIn} 0.8s ease-out; /* Add fade-in animation to container */
   }
 
   .card {
     position: relative;
-    width: 220px;
-    height: 250px;
+    width: 500px; /* Slightly increased width */
+    height: 500px; /* Slightly increased height */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 10px;
-    border-radius: 10px;
-    backdrop-filter: blur(30px);
-    background-color: rgba(65, 65, 65, 0.308);
-    border: 1px solid rgba(255, 255, 255, 0.089);
+    padding: 25px 15px; /* Increased padding */
+    border-radius: 15px; /* More rounded corners */
+    backdrop-filter: blur(40px); /* Increased blur for stronger glass effect */
+    background-color: rgba(255, 255, 255, 0.15); /* Lighter, more transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Stronger border for better definition */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
     cursor: pointer;
+    overflow: hidden; /* Ensures no content spills out with inner effects */
+
+    &:hover {
+      transform: translateY(-5px) scale(1.02); /* Lift and slightly scale on hover */
+      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+    }
   }
 
   .city {
     font-weight: 700;
-    font-size: 0.9em;
-    letter-spacing: 1.2px;
+    font-size: 1em; /* Slightly larger font */
+    letter-spacing: 1.5px; /* Increased letter spacing */
     color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Add subtle text shadow for readability */
+    margin-bottom: 5px; /* Add some margin */
   }
 
   .weather {
     font-weight: 500;
-    font-size: 0.7em;
-    letter-spacing: 1.2px;
-    color: rgb(197, 197, 197);
+    font-size: 0.8em; /* Slightly larger font */
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.8); /* Lighter white for secondary text */
+    text-transform: uppercase; /* Make it uppercase for emphasis */
+    margin-bottom: 10px;
+  }
+
+  .weather-icon { /* New class for the SVG icon */
+    width: 120px;
+    height: 120px;
+    margin: 10px 0; /* Add margin around the icon */
+    animation: ${float} 3s ease-in-out infinite; /* Gentle floating animation */
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); /* Shadow for the icon */
   }
 
   .temp {
-    font-size: 1.8em;
+    font-size: 2.5em; /* Larger temperature text */
+    font-weight: 600;
     color: white;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.4); /* Stronger text shadow for temperature */
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
 
   .minmaxContainer {
@@ -79,6 +124,7 @@ const StyledWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: auto; /* Pushes min/max to the bottom */
   }
 
   .min,
@@ -86,46 +132,93 @@ const StyledWrapper = styled.div`
     width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center; /* Center align min/max values */
     justify-content: center;
-    padding: 0px 20px;
-    gap: 4px;
+    padding: 0px 10px;
+    gap: 2px; /* Reduced gap */
   }
 
   .max {
-    align-items: flex-start;
-    border-left: 2px solid white;
+    border-left: 1px solid rgba(255, 255, 255, 0.3); /* Softer border for separation */
   }
 
   .maxHeading,
   .minHeading {
-    font-size: 0.7em;
+    font-size: 0.75em; /* Slightly larger heading */
     font-weight: 600;
-    color: white;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
   }
 
   .maxTemp,
   .minTemp {
-    font-size: 0.6em;
+    font-size: 0.8em; /* Larger temp values */
     font-weight: 500;
-    color: rgb(197, 197, 197);
+    color: rgba(255, 255, 255, 0.7);
   }
 
+  /* Background blob animation */
   .cardContainer::before {
+    width: 150px; /* Larger blob */
+    height: 150px; /* Larger blob */
+    content: "";
+    position: absolute;
+    background: linear-gradient(135deg, rgba(144, 161, 255, 0.8), rgba(0, 200, 255, 0.8)); /* Gradient for the blob */
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(80px); /* More blur for a softer glow */
+    left: 80px; /* Adjusted position */
+    top: 30px; /* Adjusted position */
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smoother, more natural transition */
+  }
+
+  /* Second background blob */
+  .cardContainer::after {
     width: 100px;
     height: 100px;
     content: "";
     position: absolute;
-    background-color: rgb(144, 161, 255);
+    background: linear-gradient(45deg, rgba(255, 180, 0, 0.8), rgba(255, 0, 100, 0.8)); /* Another gradient blob */
     z-index: -1;
     border-radius: 50%;
-    left: 100px;
-    top: 50px;
-    transition: all 1s;
+    filter: blur(70px);
+    right: 50px;
+    bottom: 20px;
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
   .cardContainer:hover::before {
-    transform: translate(-50px, 50px);
-  }`;
+    transform: translate(-30px, 40px) scale(1.1); /* Blob moves and scales on hover */
+    opacity: 0.9;
+  }
+
+  .cardContainer:hover::after {
+    transform: translate(30px, -40px) scale(1.1); /* Second blob moves and scales */
+    opacity: 0.9;
+  }
+
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 400px) {
+    .card {
+      width: 90%; /* Make card wider on very small screens */
+      height: auto; /* Adjust height automatically */
+      padding: 20px 10px;
+    }
+
+    .temp {
+      font-size: 2em;
+    }
+
+    .weather-icon {
+      width: 100px;
+      height: 100px;
+    }
+
+    .cardContainer::before,
+    .cardContainer::after {
+      filter: blur(50px); /* Less blur on smaller screens */
+    }
+  }
+`;
 
 export default Card;
