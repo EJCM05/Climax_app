@@ -1,1 +1,1 @@
-export const Climax_Key = `5b3c35f8e672b98ac206f89338c6c5c2`
+export const Climax_Key = import.meta.env.VITE_Climax_Key || 'default_key_value';
