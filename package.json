@@ -1,7 +1,7 @@
 {
   "name": "app-climax",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "homepage": "https://TheHazard911.github.io/APP-Climax",
   "type": "module",
   "scripts": {
